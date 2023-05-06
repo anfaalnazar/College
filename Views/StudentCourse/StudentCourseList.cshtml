@@ -1,0 +1,47 @@
+﻿@model IEnumerable<College.Models.StudentCourse>
+
+@{
+    ViewData["Title"] = "StudentCourseList";
+}
+
+<h1>StudentCourseList</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.student)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.course)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Is_Active)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.student.id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.course.CourseName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Is_Active)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.StudentCourseId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.StudentCourseId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.StudentCourseId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,60 @@
+﻿@model College.Models.StudentVM
+
+@{
+    ViewData["Title"] = "CreateStudent";
+}
+
+<h1>CreateStudent</h1>
+
+<h4>StudentModel</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="name" class="control-label"></label>
+                <input asp-for="name" class="form-control" />
+                <span asp-validation-for="name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="address" class="control-label"></label>
+                <input asp-for="address" class="form-control" />
+                <span asp-validation-for="address" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="phone" class="control-label"></label>
+                <input asp-for="phone" class="form-control" />
+                <span asp-validation-for="phone" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="degreeid" class="control-label"></label>
+                <select asp-for="degreeid" class="form-control" asp-items="ViewBag.degreeid">
+                    <option value="0">Select Degree</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="CourseIds" class="control-label"></label>
+                <select asp-for="CourseIds" asp-items="ViewBag.CourseList" class="multiple-checkboxes" multiple="multiple">
+                    <option value="0">Select Courses</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="IsActive" class="control-label"></label>
+                <input asp-for="IsActive" class="form-control" />
+                <span asp-validation-for="IsActive" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

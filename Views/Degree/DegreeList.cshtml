@@ -1,0 +1,40 @@
+﻿@model IEnumerable<College.Models.DegreeModel>
+
+@{
+    ViewData["Title"] = "DegreeList";
+}
+
+<h1>DegreeList</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.degreename)
+            </th>
+           
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.degreename)
+            </td>
+
+            <td>
+                <a asp-controller="Degree" asp-action="EditDegree" asp-route-degreeid="@item.degreeid">Edit</a>
+
+            </td>
+            <td>
+                <a asp-controller="Degree" asp-action="deletedegree" asp-route-degreeid="@item.degreeid">Delete</a>
+
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,59 @@
+﻿@model IEnumerable<College.Models.FeeRemittance>
+
+@{
+    ViewData["Title"] = "FeeRemittanceList";
+}
+
+<h1>FeeRemittanceList</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.student)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.course)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.totalpaid)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.remaining)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.nowpaying)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.student.id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.course.CourseName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.totalpaid)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.remaining)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.nowpaying)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.FeeRemittanceId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.FeeRemittanceId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.FeeRemittanceId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
